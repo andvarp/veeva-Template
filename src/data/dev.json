@@ -1,0 +1,11 @@
+{
+		"slideMap": {
+		"home": { "km": "home.zip" },
+		"page-1": { "km": "page-1.zip" },
+		"page-2": { "km": "page-2.zip" },
+		"page-3": { "km": "page-3.zip" },
+		"references": { "km": "references.zip" },
+		"isi": { "km": "isi.zip" },
+		"pi": { "km": "PI.zip" }
+	}
+}

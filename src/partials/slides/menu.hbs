@@ -1,0 +1,17 @@
+---
+nav_menu: <%=cfg.slides.nav_bar%>
+---
+
+<!-- Navigation Bar-->
+<nav class="main-menu-items {{hyphenate menu_item}}">
+	<ul>
+		{{#each cfg.slides.nav_menu}}
+		<li id="{{id}}">
+                            <a href="#" class="gotoslide" data-gotoslide="{{gotoslide-id}}">
+                               <span>{{name}}</span>
+                            </a>
+                        </li>
+		{{/each}}
+	</ul>
+</nav>
+<!-- End Navigation Bar-->

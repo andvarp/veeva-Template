@@ -1,0 +1,91 @@
+#!/bin/bash
+
+# Validate command line args
+if [ $# -ne 2 ] ; then
+   echo "Usage: . addNewSlide <BRAND-NAME> <SLIDE-NAME>"
+else
+   ##Color
+   YLLW=$(tput setaf 3)
+   WHT=$(tput setaf 7)
+
+   ##FOLDER NAMES
+   BASEFOLDER=`pwd -P`
+   PAGESFOLDER="./src/pages/"
+   BRANDFOLDER=$1
+   ROOTFOLDER=$2
+   ASSETSFOLDER="assets"
+   CSSFOLDER="css"
+   JSFOLDER="js"
+   IMGFOLDER="img"
+   FULLPATH=${PAGESFOLDER}${BRANDFOLDER}
+
+   ##FILE NAMES
+   STYLESFILE="styles.css"
+   SCRIPTSFILE="slide.js"
+   SLIDEFILE="index.hbs"
+
+   ##DEFAULT SLIDE TEMPLATE VARIABLES
+   CFGTEXT="---\n"
+   CFGTEXT=${CFGTEXT}"title: "${ROOTFOLDER}"\n"
+   CFGTEXT=${CFGTEXT}"layout: content.hbs\n"
+
+   CFGTEXT=${CFGTEXT}"menu_item: \n"
+   CFGTEXT=${CFGTEXT}"---\n\n"
+
+   ##DEFAULT JS SLIDE CODE
+   JSTEXT="\$(document).ready(function(){\n"
+   JSTEXT=${JSTEXT}"\t/*your code goes in here*/\n"
+   JSTEXT=${JSTEXT}"});\n"
+
+   ##UTIL FUNCTIONS
+   function dir {
+	  mkdir $@ && cd $_
+   }
+
+   function folderTree {
+	  TEXT=$@;
+	  echo "${YLLW} Slide Created -> " $@
+	  find . -print | sed -e "s;[^/]*/;├── ;g;s;____|; |;g"
+	  echo "${WHT}"
+}
+
+   ##CHANGE DIRECTORY TO BRAND FOLDER
+   cd "${FULLPATH}"
+   ##CREATE SLIDE ROOT FOLDER
+   dir ${ROOTFOLDER}
+
+   ##CREATE SLIDE AND PRINT INTO THE SLIDE FILE THE CONFIG VARIABLES
+   echo -e ${CFGTEXT} >> ${SLIDEFILE}
+
+   ##CREATE ASSETS FOLDER
+   dir ${ASSETSFOLDER}
+
+   ##CREATE CSS FOLDER
+   dir ${CSSFOLDER}
+   ##CREATE
+   echo "" >> ${STYLESFILE}
+   ##CHANGE PATH TO ASSETS FOLDER
+   cd ..
+
+   ##CREATE JS FOLDER
+   dir ${JSFOLDER}
+   ##CREATE
+   echo -e ${JSTEXT} >> ${SCRIPTSFILE}
+   ##CHANGE PATH TO ASSETS FOLDER
+   cd ..
+
+   ##CREATE IMG FOLDER
+   dir ${IMGFOLDER}
+   ##CHANGE PATH TO ASSETS FOLDER
+   cd ..
+
+   ##CHANGE PATH TO ROOT FOLDER
+   cd ..
+
+   ##CHANGE PATH TO BRAND ROOT FOLDER
+
+   folderTree ${ROOTFOLDER}
+
+   ##CHANGE PATH TO PARENT ROOT FOLDER
+   cd "${BASEFOLDER}"
+fi

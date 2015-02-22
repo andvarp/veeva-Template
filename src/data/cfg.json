@@ -1,0 +1,26 @@
+{
+	"paths": {
+		"global": {
+			"base": "assets/global",
+			"base_root":"assets",
+			"js": "<%=cfg.paths.global.base%>/js",
+			"css": "<%=cfg.paths.global.base%>/css"
+		},
+		"slides": {
+			"base": "assets/slides",
+			"js": "<%=cfg.paths.slides.base%>/js",
+			"css": "<%=cfg.paths.slides.base%>/css"
+		}
+	},
+	"slides":{
+		"nav_menu":[
+			{"name":"HOME", "id":"menu-home", "gotoslide-id":"home"},
+			{"name":"Page 1", "id":"menu-page-1", "gotoslide-id":"page-1"},
+			{"name":"Page 2", "id":"menu-page-2", "gotoslide-id":"page-2"},
+			{"name":"Page 3","id":"menu-page-3", "gotoslide-id":"page-3"},
+			{"name":"Prescribing Information", "id":"menu-pi", "gotoslide-id":"pi"},
+			{"name":"Important Safety Information", "id":"menu-full-isi", "gotoslide-id":"isi"},
+			{"name":"References", "id":"menu-references", "gotoslide-id":"references"}
+		]
+	}
+}

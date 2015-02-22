@@ -1,0 +1,35 @@
+---
+layout: default.hbs
+_layout-class: <%= layout_main_class %>
+---
+<!-- Main Layout -->
+<div class="slide-layout {{_layout-class}}">
+	{{> header}}
+	{{>body}}
+</div>
+<!-- End Layout -->
+
+
+
+
+<script type="text/javascript">
+
+		$(document).ready(function(){
+			var el = new IVA();
+			el.addActiveMenuAndSubMenu('menu-{{menu_item}}','nav-{{menu_item}}-{{hyphenate sub_menu_option_selected}}');
+			var el = { };
+			{{#contains production true}}
+				{{#each prod.slideMap}}
+					el["{{@key}}"] ={km:"{{this.km}}", pres:"{{this.pres}}"};
+				{{/each}}
+			{{else}}
+				{{#each dev.slideMap}}
+					el["{{@key}}"] ={km:"{{this.km}}", pres:"{{this.pres}}"};
+				{{/each}}
+			{{/contains}}
+
+			DHVU.slideMap = el;
+		});
+
+
+</script>

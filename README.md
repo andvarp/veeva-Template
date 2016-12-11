@@ -1,5 +1,5 @@
 # Getting Started
-****Full Developer guide is located in IVA Confluence page: http://confluence.publicishealthcare.com/display/gilead/IVA+Development+Guide#create-a-slide-page**
+****Full Developer guide is located in IVA Confluence page: 
 ### Installation
 - You need to Install *Node.js*
     - On windows, download the installer from http://nodejs.org/download/
